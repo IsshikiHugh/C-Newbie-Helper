@@ -1,11 +1,12 @@
 #ifndef __C_CLASS_HELPER__
 #define __C_CLASS_HELPER__
 
-/*******************************************
- * C Class Helper 0.0.1
- * Github Repository Address:
- * 
- *******************************************/
+/****************************************************
+ * C Class Helper 0.0.1                             *
+ * ------------------------------------------------ *
+ * Github Repository Address:                       *
+ * - https://github.com/IsshikiHugh/C-Class-Helper  *
+ ***************************************************/
 
 #include <stdio.h>
 #include <string.h>
@@ -21,7 +22,7 @@
 #define PRINT_END() if(1){ PRINT_DOUBLE_LINE(); printf("<<<< <<<< <<<< <<<< [:CCH:]\n\n"); }
 #define LOG(...) if(SHOW_LOGS){ PRINT_BEGAIN(); PRINT_LOCATION(); PRINT_CONTANT(__VA_ARGS__); PRINT_END(); }
 
-#define SHOW_VAR(CCH_TYPE, CCH_VAL) if(SHOW_LOGS){ PRINT_BEGAIN(); PRINT_LOCATION(); PRINT_CONTANT("< Variable Monitor >"); PRINT_CONTANT("%s = "CCH_TYPE, #CCH_VAL, CCH_VAL); PRINT_END(); }
+#define SHOW_VAR(CCH_TYPE, CCH_VAR) if(SHOW_LOGS){ PRINT_BEGAIN(); PRINT_LOCATION(); PRINT_CONTANT("< Variable Monitor >"); PRINT_CONTANT("%s = "CCH_TYPE, #CCH_VAR, CCH_VAR); PRINT_END(); }
 
 #define PRINT_ARR(CCH_TYPE, CCH_ARR_NAME, CCH_ARR_BEGIN, CCH_ARR_END) if(1){ int CCH_IT; for(CCH_IT = CCH_ARR_BEGIN; CCH_IT < CCH_ARR_END; ++CCH_IT) printf("%s[%d] = "CCH_TYPE"\n", #CCH_ARR_NAME, CCH_IT, CCH_ARR_NAME[CCH_IT]); }
 #define SHOW_ARR(CCH_TYPE, CCH_ARR_NAME, CCH_ARR_BEGIN, CCH_ARR_END) if(SHOW_LOGS){ PRINT_BEGAIN(); PRINT_LOCATION(); PRINT_CONTANT("< Array Monitor >"); PRINT_ARR(CCH_TYPE, CCH_ARR_NAME, CCH_ARR_BEGIN, CCH_ARR_END); PRINT_END(); }
