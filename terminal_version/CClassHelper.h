@@ -63,22 +63,14 @@
 #define PRINT_LINE() \
 do{ \
     if(1){ \
-        OUTPUT(CCH_YELLOW "--------------------------------\n" CCH_DEFAULT_COLOR); \
-    } \
-}while(0)
-
-#define PRINT_DOUBLE_LINE() \
-do{ \
-    if(1){ \
-        OUTPUT(CCH_YELLOW "================================\n" CCH_DEFAULT_COLOR); \
+        OUTPUT(CCH_YELLOW "--------------------------------------------------------\n" CCH_DEFAULT_COLOR); \
     } \
 }while(0)
 
 #define PRINT_BEGAIN() \
 do{ \
     if(1){ \
-        OUTPUT(CCH_BLUE "\n[:CCH:] "  " >>>> "  " >>>> "  " >>>> \n" CCH_DEFAULT_COLOR); \
-        PRINT_DOUBLE_LINE(); \
+        OUTPUT(CCH_YELLOW "\n=== >>" CCH_BLUE " [:CCH:] " CCH_YELLOW ">> ======================================\n" CCH_DEFAULT_COLOR); \
     } \
 }while(0)
 
@@ -102,8 +94,7 @@ do{ \
 #define PRINT_END() \
 do{ \
     if(1){ \
-        PRINT_DOUBLE_LINE(); \
-        OUTPUT(CCH_BLUE "       " " <<<< "  " <<<< "  " <<<< "  "[:CCH:]\n\n" CCH_DEFAULT_COLOR); \
+        OUTPUT(CCH_YELLOW "====================================== << " CCH_BLUE "[:CCH:]" CCH_YELLOW " << ===\n\n" CCH_DEFAULT_COLOR); \
     } \
 }while(0)
 

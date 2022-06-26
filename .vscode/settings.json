@@ -4,6 +4,7 @@
         "exception": "c",
         "*.tcc": "c",
         "fstream": "c",
-        "string.h": "c"
+        "string.h": "c",
+        "cclasshelper.h": "c"
     }
 }
