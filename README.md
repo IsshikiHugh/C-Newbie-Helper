@@ -55,11 +55,11 @@
 
 正常输出模式：
 
-![](https://github.com/IsshikiHugh/C-Class-Helper/blob/master/img/img1.png)
+![](https://raw.githubusercontent.com/IsshikiHugh/C-Class-Helper/main/img/img1.png)
 
 简化输出模式：
 
-![](https://github.com/IsshikiHugh/C-Class-Helper/blob/master/img/img2.png)
+![](https://raw.githubusercontent.com/IsshikiHugh/C-Class-Helper/main/img/img2.png)
 
 
 ## 使用 | Usage
