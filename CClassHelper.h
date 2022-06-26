@@ -101,7 +101,7 @@ do{ \
     } \
 }while(0)
 
-#define PRINT_CONTANT(...) \
+#define PRINT_CONTENT(...) \
 do{ \
     if(1){ \
         OUTPUT(CCH_GREEN __VA_ARGS__); \
@@ -121,7 +121,7 @@ do{ \
     if(SHOW_LOGS){ \
         PRINT_BEGAIN(); \
         PRINT_LOCATION(); \
-        PRINT_CONTANT(__VA_ARGS__); \
+        PRINT_CONTENT(__VA_ARGS__); \
         PRINT_END(); \
     } \
 }while (0)
@@ -131,8 +131,8 @@ do{ \
     if(SHOW_LOGS){ \
         PRINT_BEGAIN(); \
         PRINT_LOCATION(); \
-        PRINT_CONTANT(CCH_BLUE "< Variable Monitor >" CCH_DEFAULT_COLOR); \
-        PRINT_CONTANT("%s" CCH_BLUE " = " CCH_GREEN CCH_TYPE, #CCH_VAR, CCH_VAR); \
+        PRINT_CONTENT(CCH_BLUE "< Variable Monitor >" CCH_DEFAULT_COLOR); \
+        PRINT_CONTENT("%s" CCH_BLUE " = " CCH_GREEN CCH_TYPE, #CCH_VAR, CCH_VAR); \
         PRINT_END(); \
     } \
 }while(0)
@@ -141,59 +141,62 @@ do{ \
 #define PRINT_ARR(CCH_TYPE, CCH_ARR_NAME, CCH_ARR_BEGIN, CCH_ARR_END) \
 do{ \
     if(1){ \
-        int CCH_IT;                                                   \
+        int CCH_IT; \
         OUTPUT(CCH_GREEN "%s" CCH_BLUE " = ", #CCH_ARR_NAME); \
         OUTPUT(CCH_RED "[");\
-        for(CCH_IT = CCH_ARR_BEGIN; CCH_IT < CCH_ARR_END; ++CCH_IT){   \
-            if(CCH_IT == CCH_ARR_END -1 ) {OUTPUT(CCH_GREEN CCH_TYPE, CCH_ARR_NAME[CCH_IT]); break;} \
-            OUTPUT(CCH_GREEN CCH_TYPE ", ", CCH_ARR_NAME[CCH_IT]);} \
-        OUTPUT(CCH_RED "]\n");                                          \
-                                                                          \
+        for(CCH_IT = CCH_ARR_BEGIN; CCH_IT < CCH_ARR_END; ++CCH_IT){ \
+            if(CCH_IT == CCH_ARR_END -1 ){ \
+                OUTPUT(CCH_GREEN CCH_TYPE, CCH_ARR_NAME[CCH_IT]); \
+                break; \
+            } \
+            OUTPUT(CCH_GREEN CCH_TYPE ", ", CCH_ARR_NAME[CCH_IT]); \
+        } \
+        OUTPUT(CCH_RED "]\n"); \
+    } \
+}while(0)
+
+
+#define PRINT_N_ARR(CCH_TYPE, CCH_ARR_NAME, CCH_ELEMENT_SIZE, CCH_SIZE) \
+do{ \
+    if(1){ \
+        int CCH_IT; \
+        char* CCH_BEGIN = (char*)CCH_ARR_NAME; \
+        OUTPUT(CCH_GREEN "%s" CCH_BLUE " = ", #CCH_ARR_NAME); \
+        OUTPUT(CCH_RED "["); \
+        for(CCH_IT = 0; CCH_IT < CCH_SIZE; CCH_IT+=CCH_ELEMENT_SIZE){ \
+            if(CCH_IT == CCH_SIZE - CCH_ELEMENT_SIZE ) {OUTPUT(CCH_GREEN CCH_TYPE, CCH_BEGIN[CCH_IT]); break;} \
+            OUTPUT(CCH_GREEN CCH_TYPE ", ", CCH_BEGIN[CCH_IT]);} \
+        OUTPUT(CCH_RED "]\n"); \
     } \
 }while(0)
 
 #define PRINT_2_ARR(CCH_TYPE, CCH_ARR_NAME, CCH_ARR_ROW_NUM, CCH_ARR_COL_NUM) \
 do{ \
     if(1){ \
-        int CCH_IT_ROW;                                                   \
+        int CCH_IT_ROW; \
         OUTPUT(CCH_GREEN "%s" CCH_BLUE " = \n", #CCH_ARR_NAME); \
         OUTPUT(CCH_RED "[");\
         for(CCH_IT_ROW = 0; CCH_IT_ROW < CCH_ARR_ROW_NUM; ++CCH_IT_ROW){             \
-            int CCH_IT_COL;                                                   \
-            if(CCH_IT_ROW == 0 ) OUTPUT(CCH_RED "[");\
-            else OUTPUT(CCH_RED " [");\
-            for(CCH_IT_COL = 0; CCH_IT_COL < CCH_ARR_COL_NUM; ++CCH_IT_COL){                                                              \
+            int CCH_IT_COL; \
+            if(CCH_IT_ROW == 0 ) OUTPUT(CCH_RED "["); \
+            else OUTPUT(CCH_RED " ["); \
+            for(CCH_IT_COL = 0; CCH_IT_COL < CCH_ARR_COL_NUM; ++CCH_IT_COL){ \
                 if(CCH_IT_COL == CCH_ARR_COL_NUM - 1 ) {OUTPUT(CCH_GREEN CCH_TYPE, CCH_ARR_NAME[CCH_IT_ROW][CCH_IT_COL]); break;} \
-                OUTPUT(CCH_GREEN CCH_TYPE ", ", CCH_ARR_NAME[CCH_IT_ROW][CCH_IT_COL]);       \
-            }                                                                 \
-            if(CCH_IT_ROW == CCH_ARR_ROW_NUM - 1 ) {OUTPUT(CCH_RED "]");break;}                                                               \
+                OUTPUT(CCH_GREEN CCH_TYPE ", ", CCH_ARR_NAME[CCH_IT_ROW][CCH_IT_COL]); \
+            } \
+            if(CCH_IT_ROW == CCH_ARR_ROW_NUM - 1 ) {OUTPUT(CCH_RED "]");break;} \
             OUTPUT(CCH_RED "],\n"); \
         } \
-        OUTPUT(CCH_RED "]\n");                                          \
+        OUTPUT(CCH_RED "]\n"); \
     } \
 }while(0)
-
-#define PRINT_N_ARR(CCH_TYPE, CCH_ARR_NAME, CCH_ELEMENT_SIZE, CCH_SIZE) \
-do{ \
-    if(1){ \
-        int CCH_IT;                                                     \
-        char* CCH_BEGIN = (char*)CCH_ARR_NAME;                          \
-        OUTPUT(CCH_GREEN "%s" CCH_BLUE " = ", #CCH_ARR_NAME); \
-        OUTPUT(CCH_RED "[");\
-        for(CCH_IT = 0; CCH_IT < CCH_SIZE; CCH_IT+=CCH_ELEMENT_SIZE){   \
-            if(CCH_IT == CCH_SIZE - CCH_ELEMENT_SIZE ) {OUTPUT(CCH_GREEN CCH_TYPE, CCH_BEGIN[CCH_IT]); break;} \
-            OUTPUT(CCH_GREEN CCH_TYPE ", ", CCH_BEGIN[CCH_IT]);} \
-        OUTPUT(CCH_RED "]");\
-    } \
-}while(0)
-
 
 #define SHOW_ARR(CCH_TYPE, CCH_ARR_NAME, CCH_ARR_BEGIN, CCH_ARR_END) \
 do{ \
     if(SHOW_LOGS){ \
         PRINT_BEGAIN(); \
         PRINT_LOCATION(); \
-        PRINT_CONTANT(CCH_BLUE "< Array Monitor >" CCH_DEFAULT_COLOR); \
+        PRINT_CONTENT(CCH_BLUE "< Array Monitor >" CCH_DEFAULT_COLOR); \
         PRINT_ARR(CCH_TYPE, CCH_ARR_NAME, CCH_ARR_BEGIN, CCH_ARR_END); \
         PRINT_END(); \
     } \
@@ -204,7 +207,7 @@ do{ \
     if(SHOW_LOGS){ \
         PRINT_BEGAIN(); \
         PRINT_LOCATION(); \
-        PRINT_CONTANT(CCH_BLUE "< Array Monitor >" CCH_DEFAULT_COLOR); \
+        PRINT_CONTENT(CCH_BLUE "< Array Monitor >" CCH_DEFAULT_COLOR); \
         PRINT_N_ARR(CCH_TYPE, CCH_ARR_NAME, CCH_ELEMENT_SIZE, CCH_SIZE); \
         PRINT_END(); \
     } \
@@ -215,7 +218,7 @@ do{ \
     if(SHOW_LOGS){ \
         PRINT_BEGAIN(); \
         PRINT_LOCATION(); \
-        PRINT_CONTANT(CCH_BLUE "< Array Monitor >" CCH_DEFAULT_COLOR); \
+        PRINT_CONTENT(CCH_BLUE "< Array Monitor >" CCH_DEFAULT_COLOR); \
         PRINT_2_ARR(CCH_TYPE, CCH_ARR_NAME, CCH_ARR_ROW_NUM, CCH_ARR_COL_NUM); \
         PRINT_END(); \
     } \

@@ -78,6 +78,8 @@
 
 ### 监控数组 | Array Monitor
 
+#### 一维数组
+
 使用`SHOW_ARR(CCH_TYPE, CCH_ARR_NAME, CCH_ARR_BEGIN, CCH_ARR_END)`来监控数组。
 - 其中`CCH_TYPE`指对应变量在`printf()`的 format 中所使用的占位符，同上；
 - `CCH_ARR_NAME`指数组名，例如`int a[10];`中的`a`；
@@ -93,11 +95,51 @@
     SHOW_ARR("%d", a, 0, 10);
 ```
 
+#### 二维数组
+
+使用`SHOW_2_ARR(CCH_TYPE, CCH_ARR_NAME, CCH_ARR_ROW_NUM, CCH_ARR_COL_NUM)`来监控数组。
+- 其中`CCH_TYPE`指对应变量在`printf()`的 format 中所使用的占位符，同上；
+- `CCH_ARR_NAME`指数组名，例如`int a[10][10];`中的`a`；
+- `CCH_ARR_ROW_NUM`和`CCH_ARR_COL_NUM`分别为需要监控的二维数组的行数和列数；
+  - 具体来说，比如为想监控这样一个二维数组：
+```c
+int a[3][4] = {{1,2,3,11},
+               {4,5,6,12},
+               {7,8,9,10}};
+``` 
+  - 那么对应的`CCH_ARR_ROW_NUM`为`3`，`CCH_ARR_COL_NUM`为`4`；
+  - 换句话来说，这个宏函数只能用来监控二维数组从`( 0 , 0 )`到`( CCH_ARR_ROW_NUM-1 , CCH_ARR_COL_NUM-1 )`的矩阵。
+
+举个例子：
+
+如果您想在某一处监控上面那个二维数组`a[][]`，则在该位置写上：
+
+```c
+    SHOW_2_ARR("%d", a, 3, 4);
+```
+
+#### 任意维数组
+
+使用`SHOW_N_ARR(CCH_TYPE, CCH_ARR_NAME, CCH_ELEMENT_SIZE, CCH_SIZE)`来监控任意维数组。
+- 其中`CCH_TYPE`指对应变量在`printf()`的 format 中所使用的占位符，同上；
+- `CCH_ARR_NAME`指数组名，例如`int a[10][10];`中的`a`；
+- `CCH_ELEMENT_SIZE`和`CCH_SIZE`分别为需要监控的数组的每一个元素的大小和整个数组的大小，一般推荐直接写成`sizeof(<EleType>)`和`sizeof(<ArrName>)`；
+  - 具体来说，比如有一个三维`double`类数组`a[11][45][14]`，则：
+  - `CCH_ELEMENT_SIZE`为`sizeof(double)`；
+  - `CCH_SIZE`为`sizeof(a)`；
+举个例子：
+
+如果您想在某一处监控上面那个三维数组`a[][]`，则在该位置写上：
+
+```c
+    SHOW_2_ARR("%lf", a, sizeof(double), sizeof(a));
+```
+
 ## 后续计划
 
 - [x] 输出为日志文件
 - [x] 支持正常 terminal 下的彩色字体
 - [ ] 支持 Windows CMD 下的彩色字体
-- [ ] 尝试解决多维数组的监控方案
+- [x] 尝试解决多维数组的监控方案 *感谢[@solar-z](https://github.com/solar-z)*
 - [ ] 在监控变量时支持自定义注解语句（目前已经能够实现，但是是否有更优雅的解法）
 - [ ] ...
