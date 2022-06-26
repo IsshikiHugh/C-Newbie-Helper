@@ -2,7 +2,7 @@
 #define __C_CLASS_HELPER__
 
 /****************************************************
- * C Class Helper 0.0.3                             *
+ * C Class Helper 0.0.5                             *
  * ------------------------------------------------ *
  * Github Repository Address:                       *
  * - https://github.com/IsshikiHugh/C-Class-Helper  *
