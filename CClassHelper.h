@@ -19,7 +19,7 @@
 // MODE 0 : Logs will be write to 'CCH_log.txt' file.
 // MODE 1 : Logs will be print to console (colorful for normal terminal).
 // MODE 2 : Logs will be print to console (colorless but fine for CMD).
-#define CCH_MODE 2
+#define CCH_MODE 1
 
 #if CCH_MODE == 0
     #define CCH_BLACK         ""
@@ -137,14 +137,56 @@ do{ \
     } \
 }while(0)
 
+
 #define PRINT_ARR(CCH_TYPE, CCH_ARR_NAME, CCH_ARR_BEGIN, CCH_ARR_END) \
 do{ \
     if(1){ \
-        int CCH_IT; \
-        for(CCH_IT = CCH_ARR_BEGIN; CCH_IT < CCH_ARR_END; ++CCH_IT) \
-        OUTPUT(CCH_GREEN "%s[%d]" CCH_BLUE " = " CCH_GREEN CCH_TYPE "\n" CCH_DEFAULT_COLOR, #CCH_ARR_NAME, CCH_IT, CCH_ARR_NAME[CCH_IT]); \
+        int CCH_IT;                                                   \
+        OUTPUT(CCH_GREEN "%s" CCH_BLUE " = ", #CCH_ARR_NAME); \
+        OUTPUT(CCH_RED "[");\
+        for(CCH_IT = CCH_ARR_BEGIN; CCH_IT < CCH_ARR_END; ++CCH_IT){   \
+            if(CCH_IT == CCH_ARR_END -1 ) {OUTPUT(CCH_GREEN CCH_TYPE, CCH_ARR_NAME[CCH_IT]); break;} \
+            OUTPUT(CCH_GREEN CCH_TYPE ", ", CCH_ARR_NAME[CCH_IT]);} \
+        OUTPUT(CCH_RED "]\n");                                          \
+                                                                          \
     } \
 }while(0)
+
+#define PRINT_2_ARR(CCH_TYPE, CCH_ARR_NAME, CCH_ARR_ROW_NUM, CCH_ARR_COL_NUM) \
+do{ \
+    if(1){ \
+        int CCH_IT_ROW;                                                   \
+        OUTPUT(CCH_GREEN "%s" CCH_BLUE " = \n", #CCH_ARR_NAME); \
+        OUTPUT(CCH_RED "[");\
+        for(CCH_IT_ROW = 0; CCH_IT_ROW < CCH_ARR_ROW_NUM; ++CCH_IT_ROW){             \
+            int CCH_IT_COL;                                                   \
+            if(CCH_IT_ROW == 0 ) OUTPUT(CCH_RED "[");\
+            else OUTPUT(CCH_RED " [");\
+            for(CCH_IT_COL = 0; CCH_IT_COL < CCH_ARR_COL_NUM; ++CCH_IT_COL){                                                              \
+                if(CCH_IT_COL == CCH_ARR_COL_NUM - 1 ) {OUTPUT(CCH_GREEN CCH_TYPE, CCH_ARR_NAME[CCH_IT_ROW][CCH_IT_COL]); break;} \
+                OUTPUT(CCH_GREEN CCH_TYPE ", ", CCH_ARR_NAME[CCH_IT_ROW][CCH_IT_COL]);       \
+            }                                                                 \
+            if(CCH_IT_ROW == CCH_ARR_ROW_NUM - 1 ) {OUTPUT(CCH_RED "]");break;}                                                               \
+            OUTPUT(CCH_RED "],\n"); \
+        } \
+        OUTPUT(CCH_RED "]\n");                                          \
+    } \
+}while(0)
+
+#define PRINT_N_ARR(CCH_TYPE, CCH_ARR_NAME, CCH_ELEMENT_SIZE, CCH_SIZE) \
+do{ \
+    if(1){ \
+        int CCH_IT;                                                     \
+        char* CCH_BEGIN = (char*)CCH_ARR_NAME;                          \
+        OUTPUT(CCH_GREEN "%s" CCH_BLUE " = ", #CCH_ARR_NAME); \
+        OUTPUT(CCH_RED "[");\
+        for(CCH_IT = 0; CCH_IT < CCH_SIZE; CCH_IT+=CCH_ELEMENT_SIZE){   \
+            if(CCH_IT == CCH_SIZE - CCH_ELEMENT_SIZE ) {OUTPUT(CCH_GREEN CCH_TYPE, CCH_BEGIN[CCH_IT]); break;} \
+            OUTPUT(CCH_GREEN CCH_TYPE ", ", CCH_BEGIN[CCH_IT]);} \
+        OUTPUT(CCH_RED "]");\
+    } \
+}while(0)
+
 
 #define SHOW_ARR(CCH_TYPE, CCH_ARR_NAME, CCH_ARR_BEGIN, CCH_ARR_END) \
 do{ \
@@ -153,6 +195,28 @@ do{ \
         PRINT_LOCATION(); \
         PRINT_CONTANT(CCH_BLUE "< Array Monitor >" CCH_DEFAULT_COLOR); \
         PRINT_ARR(CCH_TYPE, CCH_ARR_NAME, CCH_ARR_BEGIN, CCH_ARR_END); \
+        PRINT_END(); \
+    } \
+}while(0)
+
+#define SHOW_N_ARR(CCH_TYPE, CCH_ARR_NAME, CCH_ELEMENT_SIZE, CCH_SIZE) \
+do{ \
+    if(SHOW_LOGS){ \
+        PRINT_BEGAIN(); \
+        PRINT_LOCATION(); \
+        PRINT_CONTANT(CCH_BLUE "< Array Monitor >" CCH_DEFAULT_COLOR); \
+        PRINT_N_ARR(CCH_TYPE, CCH_ARR_NAME, CCH_ELEMENT_SIZE, CCH_SIZE); \
+        PRINT_END(); \
+    } \
+}while(0)
+
+#define SHOW_2_ARR(CCH_TYPE, CCH_ARR_NAME, CCH_ARR_ROW_NUM, CCH_ARR_COL_NUM) \
+do{ \
+    if(SHOW_LOGS){ \
+        PRINT_BEGAIN(); \
+        PRINT_LOCATION(); \
+        PRINT_CONTANT(CCH_BLUE "< Array Monitor >" CCH_DEFAULT_COLOR); \
+        PRINT_2_ARR(CCH_TYPE, CCH_ARR_NAME, CCH_ARR_ROW_NUM, CCH_ARR_COL_NUM); \
         PRINT_END(); \
     } \
 }while(0)

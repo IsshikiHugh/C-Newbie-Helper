@@ -7,7 +7,10 @@ int main(){
     int myIntVar = 114514;
     double myDoubleVar = 1919.810;
     char myCharArr[] = "A test char arrary.";
-    
+    int myInt2Arr[3][4] = {{1,2,3, 11},
+                           {4,5,6, 12},
+                           {7,8,9,10}};
+
     LOG("This is a demo.");
     SHOW_VAR("%d", myIntVar);           // value
     SHOW_VAR("%p", &myIntVar);          // address
@@ -15,6 +18,11 @@ int main(){
     SHOW_VAR("%p", &myDoubleVar);       // address
     SHOW_ARR("%c", myCharArr, 0, 10);   // value
     SHOW_ARR("%d", myCharArr, 10, 20);  // ASCII
+    SHOW_N_ARR("%c", myCharArr, sizeof(char), sizeof(myCharArr));   // value
+    SHOW_N_ARR("%d", myInt2Arr, sizeof(int), sizeof(myInt2Arr));  // ASCII
+    SHOW_2_ARR("%d",myInt2Arr,3,4);
+
+
 
     LOG("Program Finished!");
     return 0;
