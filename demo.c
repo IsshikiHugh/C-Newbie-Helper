@@ -1,6 +1,5 @@
 #include <stdio.h>
-// #include "./cmd_version/CClassHelper.h"
-#include "./terminal_version/CClassHelper.h"
+#include "CClassHelper.h"
 
 int main(){
     LOG("Program Start!");
