@@ -6,7 +6,7 @@
  * ------------------------------------------------ *
  * Github Repository Address:                       *
  * - https://github.com/IsshikiHugh/C-Class-Helper  *
- ***************************************************/
+ ****************************************************/
 
 #include <stdio.h>
 #include <string.h>
