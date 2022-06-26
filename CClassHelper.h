@@ -2,7 +2,7 @@
 #define __C_CLASS_HELPER__
 
 /****************************************************
- * C Class Helper 0.0.2 (normal console)            *
+ * C Class Helper 0.0.3                             *
  * ------------------------------------------------ *
  * Github Repository Address:                       *
  * - https://github.com/IsshikiHugh/C-Class-Helper  *
@@ -17,8 +17,9 @@
 #define SHOW_LOGS 1
 
 // MODE 0 : Logs will be write to 'CCH_log.txt' file.
-// MODE 1 : Logs will be print to console (normal terminal).
-#define CCH_MODE 1
+// MODE 1 : Logs will be print to console (colorful for normal terminal).
+// MODE 2 : Logs will be print to console (colorless but fine for CMD).
+#define CCH_MODE 2
 
 #if CCH_MODE == 0
     #define CCH_BLACK         ""
@@ -50,6 +51,23 @@
     #define CCH_CYAN        "\033[0;36m" 
     #define CCH_WHITE       "\033[0;37m"
     #define CCH_DEFAULT_COLOR  "\033[0m" 
+    #define OUTPUT(...) \
+    do{ \
+        if(1){ \
+            fprintf(stderr, __VA_ARGS__); \
+        } \
+    }while(0)
+#endif
+#if CCH_MODE == 2
+    #define CCH_BLACK         ""
+    #define CCH_RED           ""
+    #define CCH_GREEN         ""
+    #define CCH_YELLOW        ""
+    #define CCH_BLUE          ""
+    #define CCH_PURPLE        ""
+    #define CCH_CYAN          ""
+    #define CCH_WHITE         ""
+    #define CCH_DEFAULT_COLOR "" 
     #define OUTPUT(...) \
     do{ \
         if(1){ \

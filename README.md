@@ -17,7 +17,8 @@
 
 ### 工具开关
 
-**说明**：在保留调试代码的情况下，控制是否显示日志内容。如果您希望日志内容输出，则设置为`1`，否则设置为`0`：
+**说明**：在保留调试代码的情况下，控制是否显示日志内容。
+- 如果您希望日志内容输出，则设置为`1`，否则设置为`0`：
 
 ```c
 // Set 0 if you don't want to see logs.
@@ -27,12 +28,16 @@
 
 ### 输出流
 
-**说明**：如果您希望日志打印在屏幕上，设置为`1`，如果希望日志打印在文件中，设置为`0`:
+**说明**：
+- 如果您希望日志打印在屏幕上但没有颜色高亮，设置为`2`；
+- 如果您希望日志打印在屏幕上并且有颜色（CMD无法使用），设置为`1`；
+- 如果希望日志打印在文件中，设置为`0`:
 
 ```c
 // MODE 0 : Logs will be write to 'CCH_log.txt' file.
-// MODE 1 : Logs will be print to console (normal terminal).
-#define CCH_MODE 1
+// MODE 1 : Logs will be print to console (colorful for normal terminal).
+// MODE 2 : Logs will be print to console (colorless but fine for CMD).
+#define CCH_MODE 2
 ```
 ## 使用 | Usage
 
