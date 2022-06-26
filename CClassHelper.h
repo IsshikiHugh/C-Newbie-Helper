@@ -8,9 +8,8 @@
  * - https://github.com/IsshikiHugh/C-Class-Helper  *
  ****************************************************/
 
-#include <stdio.h>
-#include <string.h>
-#include <time.h>
+
+/*** Config Part ************************************/
 
 // Set 0 if you don't want to see logs.
 // Set 1 if you want to see logs.
@@ -20,6 +19,15 @@
 // MODE 1 : Logs will be print to console (colorful for normal terminal).
 // MODE 2 : Logs will be print to console (colorless but fine for CMD).
 #define CCH_MODE 1
+
+// Set 0 if you want to see normal format.
+// Set 1 if you want it to be brief.
+#define CCH_BRIEF 1
+
+/****************************************************/
+
+#include <stdio.h>
+#include <string.h>
 
 #if CCH_MODE == 0
     #define CCH_BLACK         ""
@@ -42,15 +50,15 @@
     }while(0)
 #endif
 #if CCH_MODE == 1
-    #define CCH_BLACK       "\033[0;30m" 
-    #define CCH_RED         "\033[0;31m" 
-    #define CCH_GREEN       "\033[0;32m" 
-    #define CCH_YELLOW      "\033[0;33m" 
-    #define CCH_BLUE        "\033[0;34m" 
-    #define CCH_PURPLE      "\033[0;35m" 
-    #define CCH_CYAN        "\033[0;36m" 
-    #define CCH_WHITE       "\033[0;37m"
-    #define CCH_DEFAULT_COLOR  "\033[0m" 
+    #define CCH_BLACK           "\033[0;30m" 
+    #define CCH_RED             "\033[0;31m" 
+    #define CCH_GREEN           "\033[0;32m" 
+    #define CCH_YELLOW          "\033[0;33m" 
+    #define CCH_BLUE            "\033[0;34m" 
+    #define CCH_PURPLE          "\033[0;35m" 
+    #define CCH_CYAN            "\033[0;36m" 
+    #define CCH_WHITE           "\033[0;37m"
+    #define CCH_DEFAULT_COLOR   "\033[0m" 
     #define OUTPUT(...) \
     do{ \
         if(1){ \
@@ -59,15 +67,15 @@
     }while(0)
 #endif
 #if CCH_MODE == 2
-    #define CCH_BLACK         ""
-    #define CCH_RED           ""
-    #define CCH_GREEN         ""
-    #define CCH_YELLOW        ""
-    #define CCH_BLUE          ""
-    #define CCH_PURPLE        ""
-    #define CCH_CYAN          ""
-    #define CCH_WHITE         ""
-    #define CCH_DEFAULT_COLOR "" 
+    #define CCH_BLACK           ""
+    #define CCH_RED             ""
+    #define CCH_GREEN           ""
+    #define CCH_YELLOW          ""
+    #define CCH_BLUE            ""
+    #define CCH_PURPLE          ""
+    #define CCH_CYAN            ""
+    #define CCH_WHITE           ""
+    #define CCH_DEFAULT_COLOR   "" 
     #define OUTPUT(...) \
     do{ \
         if(1){ \
@@ -80,24 +88,28 @@
 // This part is used to print debug messages with a format like 'OUTPUT' needs.
 #define PRINT_LINE() \
 do{ \
-    if(1){ \
+    if(!CCH_BRIEF){ \
         OUTPUT(CCH_YELLOW "--------------------------------------------------------\n" CCH_DEFAULT_COLOR); \
     } \
 }while(0)
 
 #define PRINT_BEGAIN() \
 do{ \
-    if(1){ \
+    if(!CCH_BRIEF){ \
         OUTPUT(CCH_YELLOW "\n=== >>" CCH_BLUE " [:CCH:] " CCH_YELLOW ">> ======================================\n" CCH_DEFAULT_COLOR); \
+    } else { \
+        OUTPUT(CCH_YELLOW "[CCH]"); \
     } \
 }while(0)
 
 #define PRINT_LOCATION() \
 do{ \
-    if(1){ \
+    if(!CCH_BRIEF){ \
         OUTPUT(CCH_YELLOW "+ +" CCH_BLUE " File @ [ " CCH_CYAN "%s" CCH_BLUE " ]\n" CCH_DEFAULT_COLOR, __FILE__); \
-        OUTPUT(CCH_YELLOW "+ +" CCH_BLUE " Func @ [ " CCH_CYAN "%s" CCH_BLUE " ] & Line @ [ " CCH_CYAN "%d" CCH_BLUE " ]\n" CCH_DEFAULT_COLOR, __FUNCTION__, __LINE__); \
+        OUTPUT(CCH_YELLOW "+ +" CCH_BLUE " Func @ [ " CCH_CYAN "%s()" CCH_BLUE " ] & Line @ [ " CCH_CYAN "%d" CCH_BLUE " ]\n" CCH_DEFAULT_COLOR, __FUNCTION__, __LINE__); \
         PRINT_LINE(); \
+    } else { \
+        OUTPUT(CCH_YELLOW " @ " CCH_BLUE "{" CCH_CYAN "%s" CCH_BLUE "}[" CCH_CYAN "%d" CCH_BLUE "]/" CCH_CYAN "%s()" CCH_BLUE ": ", __FILE__, __LINE__, __FUNCTION__); \
     } \
 }while(0)
 
@@ -111,7 +123,7 @@ do{ \
 
 #define PRINT_END() \
 do{ \
-    if(1){ \
+    if(!CCH_BRIEF){ \
         OUTPUT(CCH_YELLOW "====================================== << " CCH_BLUE "[:CCH:]" CCH_YELLOW " << ===\n\n" CCH_DEFAULT_COLOR); \
     } \
 }while(0)
@@ -131,7 +143,7 @@ do{ \
     if(SHOW_LOGS){ \
         PRINT_BEGAIN(); \
         PRINT_LOCATION(); \
-        PRINT_CONTENT(CCH_BLUE "< Variable Monitor >" CCH_DEFAULT_COLOR); \
+        if(!CCH_BRIEF) PRINT_CONTENT(CCH_BLUE "< Variable Monitor >" CCH_DEFAULT_COLOR); \
         PRINT_CONTENT("%s" CCH_BLUE " = " CCH_GREEN CCH_TYPE, #CCH_VAR, CCH_VAR); \
         PRINT_END(); \
     } \
@@ -196,7 +208,7 @@ do{ \
     if(SHOW_LOGS){ \
         PRINT_BEGAIN(); \
         PRINT_LOCATION(); \
-        PRINT_CONTENT(CCH_BLUE "< Array Monitor >" CCH_DEFAULT_COLOR); \
+        if(!CCH_BRIEF) PRINT_CONTENT(CCH_BLUE "< Array Monitor >" CCH_DEFAULT_COLOR); \
         PRINT_ARR(CCH_TYPE, CCH_ARR_NAME, CCH_ARR_BEGIN, CCH_ARR_END); \
         PRINT_END(); \
     } \
@@ -207,7 +219,7 @@ do{ \
     if(SHOW_LOGS){ \
         PRINT_BEGAIN(); \
         PRINT_LOCATION(); \
-        PRINT_CONTENT(CCH_BLUE "< Array Monitor >" CCH_DEFAULT_COLOR); \
+        if(!CCH_BRIEF) PRINT_CONTENT(CCH_BLUE "< Array Monitor >" CCH_DEFAULT_COLOR); \
         PRINT_N_ARR(CCH_TYPE, CCH_ARR_NAME, CCH_ELEMENT_SIZE, CCH_SIZE); \
         PRINT_END(); \
     } \
@@ -218,7 +230,7 @@ do{ \
     if(SHOW_LOGS){ \
         PRINT_BEGAIN(); \
         PRINT_LOCATION(); \
-        PRINT_CONTENT(CCH_BLUE "< Array Monitor >" CCH_DEFAULT_COLOR); \
+        if(!CCH_BRIEF) PRINT_CONTENT(CCH_BLUE "< Array Monitor >" CCH_DEFAULT_COLOR); \
         PRINT_2_ARR(CCH_TYPE, CCH_ARR_NAME, CCH_ARR_ROW_NUM, CCH_ARR_COL_NUM); \
         PRINT_END(); \
     } \
