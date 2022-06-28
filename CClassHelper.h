@@ -2,7 +2,7 @@
 #define __C_CLASS_HELPER__
 
 /****************************************************
- * C Class Helper 0.0.5                             *
+ * C Class Helper 0.0.6                             *
  * ------------------------------------------------ *
  * Github Repository Address:                       *
  * - https://github.com/IsshikiHugh/C-Class-Helper  *
@@ -29,6 +29,7 @@
 #include <stdio.h>
 #include <string.h>
 
+// This part is used to customize the 'OUTPUT'.
 #if CCH_MODE == 0
     #define CCH_BLACK         ""
     #define CCH_RED           ""
@@ -93,6 +94,7 @@ do{ \
     } \
 }while(0)
 
+// This part is used to print the head of the logs message.
 #define PRINT_BEGAIN() \
 do{ \
     if(!CCH_BRIEF){ \
@@ -102,6 +104,7 @@ do{ \
     } \
 }while(0)
 
+// This part is used to print the location of the code printing the logs.
 #define PRINT_LOCATION() \
 do{ \
     if(!CCH_BRIEF){ \
@@ -113,6 +116,8 @@ do{ \
     } \
 }while(0)
 
+
+// This part is used to print the content of the logs.
 #define PRINT_CONTENT(...) \
 do{ \
     if(1){ \
@@ -121,6 +126,7 @@ do{ \
     } \
 }while(0)
 
+// This part is used to print the tail of the logs.
 #define PRINT_END() \
 do{ \
     if(!CCH_BRIEF){ \
@@ -128,6 +134,7 @@ do{ \
     } \
 }while(0)
 
+// The normal LOG macro function.
 #define LOG(...) \
 do{ \
     if(SHOW_LOGS){ \
@@ -138,6 +145,7 @@ do{ \
     } \
 }while (0)
 
+// The LOG macro function specially for variable.
 #define SHOW_VAR(CCH_TYPE, CCH_VAR) \
 do{ \
     if(SHOW_LOGS){ \
@@ -149,7 +157,7 @@ do{ \
     } \
 }while(0)
 
-
+// This part is uesd to print 1-d array.
 #define PRINT_ARR(CCH_TYPE, CCH_ARR_NAME, CCH_ARR_BEGIN, CCH_ARR_END) \
 do{ \
     if(1){ \
@@ -167,7 +175,7 @@ do{ \
     } \
 }while(0)
 
-
+// This part is used to print N-d array.
 #define PRINT_N_ARR(CCH_TYPE, CCH_ARR_NAME, CCH_ELEMENT_SIZE, CCH_SIZE) \
 do{ \
     if(1){ \
@@ -182,6 +190,7 @@ do{ \
     } \
 }while(0)
 
+// This part is used to print 2-d array/
 #define PRINT_2_ARR(CCH_TYPE, CCH_ARR_NAME, CCH_ARR_ROW_NUM, CCH_ARR_COL_NUM) \
 do{ \
     if(1){ \
@@ -203,6 +212,7 @@ do{ \
     } \
 }while(0)
 
+// The LOG macro function specially for 1-d array.
 #define SHOW_ARR(CCH_TYPE, CCH_ARR_NAME, CCH_ARR_BEGIN, CCH_ARR_END) \
 do{ \
     if(SHOW_LOGS){ \
@@ -214,6 +224,7 @@ do{ \
     } \
 }while(0)
 
+// The LOG macro function specially for N-d array.
 #define SHOW_N_ARR(CCH_TYPE, CCH_ARR_NAME, CCH_ELEMENT_SIZE, CCH_SIZE) \
 do{ \
     if(SHOW_LOGS){ \
@@ -225,6 +236,7 @@ do{ \
     } \
 }while(0)
 
+// The LOG macro function specially for 2-d array.
 #define SHOW_2_ARR(CCH_TYPE, CCH_ARR_NAME, CCH_ARR_ROW_NUM, CCH_ARR_COL_NUM) \
 do{ \
     if(SHOW_LOGS){ \
