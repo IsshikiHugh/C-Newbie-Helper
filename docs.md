@@ -148,11 +148,13 @@ int main(){
 - `CCH_ARR_NAME`指数组名，例如`int a[10][10];`中的`a`；
 - `CCH_ARR_ROW_NUM`和`CCH_ARR_COL_NUM`分别为需要监控的二维数组的行数和列数；
   - 具体来说，比如为想监控这样一个二维数组：
+
 ```c
 int a[3][4] = {{1,2,3,11},
                {4,5,6,12},
                {7,8,9,10}};
 ```
+
   - 那么对应的`CCH_ARR_ROW_NUM`为`3`，`CCH_ARR_COL_NUM`为`4`；
   - 换句话来说，这个宏函数只能用来监控二维数组从`( 0 , 0 )`到`( CCH_ARR_ROW_NUM-1 , CCH_ARR_COL_NUM-1 )`的矩阵。
 
