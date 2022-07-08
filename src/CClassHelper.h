@@ -2,7 +2,7 @@
 #define __C_CLASS_HELPER__
 
 /****************************************************
- * C Class Helper 0.0.8                             *
+ * C Class Helper 1.0                               *
  * ------------------------------------------------ *
  * Github Repository Address:                       *
  * - https://github.com/IsshikiHugh/C-Class-Helper  *
@@ -13,7 +13,7 @@
 // MODE 0 : Logs will be write to 'CCH_log.txt' file.
 // MODE 1 : Logs will be print to console (colorful for normal terminal).
 // MODE 2 : Logs will be print to console (colorless but fine for CMD).
-#define CCH_MODE 1
+#define CCH_MODE 2
 
 /*** Source Code Part *******************************/
 
@@ -144,7 +144,7 @@ do{ \
         OUTPUT(CCH_YELLOW "+ +" CCH_BLUE " Func @ [ " CCH_CYAN "%s()" CCH_BLUE " ] & Line @ [ " CCH_CYAN "%d" CCH_BLUE " ]\n" CCH_DEFAULT_COLOR, __FUNCTION__, __LINE__); \
         PRINT_LINE(); \
     } else { \
-        OUTPUT(CCH_YELLOW " @ " CCH_BLUE "{" CCH_CYAN "%s" CCH_BLUE "}[" CCH_CYAN "%d" CCH_BLUE "]/" CCH_CYAN "%s()" CCH_BLUE ": ", __FILE__, __LINE__, __FUNCTION__); \
+        OUTPUT(CCH_YELLOW " @ " CCH_BLUE "{" CCH_CYAN "%s" CCH_BLUE "}[" CCH_CYAN "%d" CCH_BLUE "]/" CCH_CYAN "%s()" CCH_BLUE " : ", __FILE__, __LINE__, __FUNCTION__); \
     } \
 }while(0)
 

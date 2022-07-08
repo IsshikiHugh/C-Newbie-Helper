@@ -1,5 +1,7 @@
 # 𝓒 𝓒𝓵𝓪𝓼𝓼 𝓗𝓮𝓵𝓹𝓮𝓻
 
+![](https://raw.githubusercontent.com/IsshikiHugh/C-Class-Helper/main/img/img1.png)
+
 ## 简介 | Brief Intro
 
 [仓库地址 | Github Repo Address](https://github.com/IsshikiHugh/C-Class-Helper)
@@ -14,10 +16,7 @@
   - 换句话说，如果你不希望几次运行的日志全都在同一个文件里无法区分，那么请在每次运行完以后删除日志文件或者重命名它。
 - 该工具中的宏函数都需要在函数内使用，也就是说你不能把它写在函数外，当然我相信几乎没有人会这么做。
 
-## 设置 | Config
-
-
-### 输出流
+## 使用之前的设置 | Config
 
 **说明**：
 
@@ -27,6 +26,8 @@
 - 如果您希望日志打印在屏幕上并且有颜色（CMD无法使用），设置为`1`；
 - 如果希望日志打印在文件中，设置为`0`:
 
+设置为`1`时效果最佳，但对于不熟悉命令行的一般同学我们推荐使用`2`，在有特殊需求时可以使用`0`
+
 ```c
 // MODE 0 : Logs will be write to 'CCH_log.txt' file.
 // MODE 1 : Logs will be print to console (colorful for normal terminal).
@@ -35,6 +36,12 @@
 ```
 
 ## 使用 | Usage
+
+### 导入 | Import
+
+- 对于尚在学习单文件编程的同学，我们建议您直接复制`CClassHelper.h`中的所有内容至你的代码的最前。
+- 如果您觉得这太过累赘，那么请在本地将`CClassHelper.h`文件与您正在编写的`.c`文件放在同一目录，并在代码的开头写上`#include "CClassHelper.h"`，但请注意，此时您无法直接将代码内容提交至在线评测工具（比如PTA）。解决方法请参考上一条。
+- 对于已经知道如何进行多模块编程的同学，我们建议您直接`#include "CClassHelper.h"`
 
 ### 显示 | Show
 
@@ -95,11 +102,6 @@ int main(){
 简化输出模式：
 
 ![](https://raw.githubusercontent.com/IsshikiHugh/C-Class-Helper/main/img/img2.png)
-
-### 导入 | Import
-
-- 对于尚在学习单文件编程的同学，我们建议你直接复制`CClassHelper.h`中的所有内容至你的代码的最前。
-- 对于已经知道如何进行多模块编程的同学，我们建议您直接`#include "CClassHelper.h"`
 
 ### 一般日志 | Log
 
@@ -196,6 +198,6 @@ int a[3][4] = {{1,2,3,11},
 - [x] 简化版输出
 - [ ] 支持 Windows CMD 下的彩色字体
 - [x] 尝试解决多维数组的监控方案 *感谢[@solar-z](https://github.com/solar-z)*
-- [ ] 在监控变量时支持自定义注解语句
-- [ ] 制作一份配套的使用说明视频
+- [ ] 制作一份配套的基础使用说明视频
+- [ ] 准备一份扩展玩法说明
 - [ ] ...
