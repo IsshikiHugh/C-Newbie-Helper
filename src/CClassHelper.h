@@ -13,7 +13,7 @@
 // MODE 0 : Logs will be write to 'CCH_log.txt' file.
 // MODE 1 : Logs will be print to console (colorful for normal terminal).
 // MODE 2 : Logs will be print to console (colorless but fine for CMD).
-#define CCH_MODE 2
+#define CCH_MODE 1
 
 /*** Source Code Part *******************************/
 
