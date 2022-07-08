@@ -12,23 +12,17 @@
 
 - 如果您将日志输出到文件中，请注意本工具只会不断追加，不会主动清空日志文件。所以请您做好日志的手动清空或备份管理工作。
   - 换句话说，如果你不希望几次运行的日志全都在同一个文件里无法区分，那么请在每次运行完以后删除日志文件或者重命名它。
+- 该工具中的宏函数都需要在函数内使用，也就是说你不能把它写在函数外，当然我相信几乎没有人会这么做。
 
 ## 设置 | Config
 
-### 工具开关
-
-**说明**：在保留调试代码的情况下，控制是否显示日志内容。
-- 如果您希望日志内容输出，则设置为`1`，否则设置为`0`：
-
-```c
-// Set 0 if you don't want to see logs.
-// Set 1 if you want to see logs.
-#define SHOW_LOGS 1
-```
 
 ### 输出流
 
 **说明**：
+
+- 该项内容需要您手动修改源代码中的对应部分，请放心，它被放在来代码的头部，很好找。
+
 - 如果您希望日志打印在屏幕上但没有颜色高亮，设置为`2`；
 - 如果您希望日志打印在屏幕上并且有颜色（CMD无法使用），设置为`1`；
 - 如果希望日志打印在文件中，设置为`0`:
@@ -40,17 +34,58 @@
 #define CCH_MODE 2
 ```
 
-### 简化输出
+## 使用 | Usage
 
-**说明**：如果您认为正常的输出过于花哨，可以修改该选项切换为简介输出模式。
-- 设置为`0`关闭简洁模式；
-- 设置为`1`打开简洁模式；
+### 显示 | Show
+
+**说明**：在保留调试代码的情况下，控制是否显示日志内容。
+
+- 默认情况下，该工具都会默认输出所有日志内容；
+- 您也可以通过调用`SET_CCH_SHOW(0);`来关闭显示；
+- 在关闭之后您也可以通过`SET_CCH_SHOW(1);`来启用显示；
 
 ```c
-// Set 0 if you want to see normal format.
-// Set 1 if you want it to be brief.
-#define CCH_BRIEF 0
+// Run 'demo1.c' to see more!
+int main(){
+    SET_CCH_SHOW(1);
+    LOG("(QWQ) I can be seen!");
+	SET_CCH_SHOW(0);
+    LOG("(QAQ) I can't be seen!");
+}
 ```
+
+### 简化 | Simplify
+
+**说明**：如果您认为正常的输出过于花哨，`CCH`提供了两套方案来调整输出的格式。
+
+使用如下方法可以**全局性**地更改输出格式：
+
+- 使用`SET_CCH_BRIEF_MODE(1);`来启用简化模式；
+- 使用`SET_CCH_BRIEF_MODE(0);`来关闭简化模式；
+
+使用`BRIEF();`和`NORMAL();`可以**局部性**地修改输出格式：
+
+```c
+// Run 'demo2.c' to see more!
+int main(){
+    SET_CCH_BRIEF_MODE(0);
+    LOG("Normal mode here!");
+	BRIEF(
+		LOG("Brief mode here!");
+        LOG("Multiline is ok!");
+	);
+    LOG("Normal mode here!");
+
+    SET_CCH_BRIEF_MODE(1);
+	LOG("Brief mode here!");
+    NORMAL(
+		LOG("Normal mode here!");
+        LOG("Multiline is ok!");
+    );
+	LOG("Brief mode here!");
+}
+```
+
 **预览**：
 
 正常输出模式：
@@ -60,9 +95,6 @@
 简化输出模式：
 
 ![](https://raw.githubusercontent.com/IsshikiHugh/C-Class-Helper/main/img/img2.png)
-
-
-## 使用 | Usage
 
 ### 导入 | Import
 
@@ -82,7 +114,6 @@
     char myCharArr[] = "It's OK!";
     LOG("This is a log message. %s", myCharArr);
 ```
-
 
 ### 监控变量 | Variable Monitor
 
@@ -165,6 +196,6 @@ int a[3][4] = {{1,2,3,11},
 - [x] 简化版输出
 - [ ] 支持 Windows CMD 下的彩色字体
 - [x] 尝试解决多维数组的监控方案 *感谢[@solar-z](https://github.com/solar-z)*
-- [ ] 在监控变量时支持自定义注解语句（目前已经能够实现，但是是否有更优雅的解法）
+- [ ] 在监控变量时支持自定义注解语句
 - [ ] 制作一份配套的使用说明视频
 - [ ] ...

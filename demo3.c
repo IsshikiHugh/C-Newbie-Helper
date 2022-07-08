@@ -1,7 +1,9 @@
 #include <stdio.h>
 #include "CClassHelper.h"
 
+
 int main(){
+    SET_CCH_BRIEF_MODE(0);
     LOG("Program Start!");
 
     int myIntVar = 114514;
@@ -23,13 +25,14 @@ int main(){
     SHOW_ARR("%c", myCharArr, 0, 10);   // value
     SHOW_ARR("%d", myCharArr, 10, 20);  // ASCII
     
+    BRIEF(
     LOG("Display SHOW_N_ARR: ");
     SHOW_N_ARR("%c", myCharArr, sizeof(char), sizeof(myCharArr));   // value
-    SHOW_N_ARR("%d", myInt2Arr, sizeof(int), sizeof(myInt2Arr));  // ASCII
-    
+    SHOW_N_ARR("%d", myInt2Arr, sizeof(int), sizeof(myInt2Arr));    // ASCII
     LOG("Display SHOW_2_ARR: ");
     SHOW_2_ARR("%d", myInt2Arr, 3, 4);
-
+    );
     LOG("Program Finished!");
     return 0;
 }
+

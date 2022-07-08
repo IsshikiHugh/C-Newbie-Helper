@@ -2,32 +2,63 @@
 #define __C_CLASS_HELPER__
 
 /****************************************************
- * C Class Helper 0.0.6                             *
+ * C Class Helper 0.0.8                             *
  * ------------------------------------------------ *
  * Github Repository Address:                       *
  * - https://github.com/IsshikiHugh/C-Class-Helper  *
  ****************************************************/
 
-
 /*** Config Part ************************************/
-
-// Set 0 if you don't want to see logs.
-// Set 1 if you want to see logs.
-#define SHOW_LOGS 1
 
 // MODE 0 : Logs will be write to 'CCH_log.txt' file.
 // MODE 1 : Logs will be print to console (colorful for normal terminal).
 // MODE 2 : Logs will be print to console (colorless but fine for CMD).
 #define CCH_MODE 1
 
-// Set 0 if you want to see normal format.
-// Set 1 if you want it to be brief.
-#define CCH_BRIEF 1
-
-/****************************************************/
+/*** Source Code Part *******************************/
 
 #include <stdio.h>
-#include <string.h>
+
+/*** Show Setting Part ******************************/
+
+#define SHOW_LOGS CCH_SHOW_LOGS
+static int CCH_SHOW_LOGS = 1;
+
+// Be used to set whether the CCH will show or not.
+// CCH will show by default.
+#define SET_CCH_SHOW(CCH_SHOW_FLAG) \
+do{ \
+    CCH_SHOW_LOGS = CCH_SHOW_FLAG; \
+}while(0)
+
+/*** Mode Setting Part ******************************/
+
+#define CCH_BRIEF CCH_USE_BRIEF_MODE
+static int CCH_USE_BRIEF_MODE = 0;
+static int CCH_TMP_USE_BRIEF_MODE = 0;
+
+// Be used to set the default mode CCH will use while printing logs.
+// CCH will use normal mode by default.
+#define SET_CCH_BRIEF_MODE(CCH_BRIEF_FLAG) \
+do{ \
+    CCH_USE_BRIEF_MODE = CCH_TMP_USE_BRIEF_MODE = CCH_BRIEF_FLAG; \
+}while(0)
+
+// Force to use brief mode.
+#define BRIEF(...) \
+do{ \
+    CCH_USE_BRIEF_MODE = 1;\
+    __VA_ARGS__ \
+    CCH_USE_BRIEF_MODE = CCH_TMP_USE_BRIEF_MODE;\
+}while(0)
+
+// Force to use normal mode.
+#define NORMAL(...) \
+do{ \
+    CCH_USE_BRIEF_MODE = 0; \
+    __VA_ARGS__; \
+    CCH_USE_BRIEF_MODE = CCH_TMP_USE_BRIEF_MODE; \
+}while(0)
 
 // This part is used to customize the 'OUTPUT'.
 #if CCH_MODE == 0
@@ -85,6 +116,7 @@
     }while(0)
 #endif
 
+/*** Functional Part ********************************/
 
 // This part is used to print debug messages with a format like 'OUTPUT' needs.
 #define PRINT_LINE() \
