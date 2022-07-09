@@ -183,14 +183,3 @@ int a[3][4] = {...};
 ```c
     SHOW_2_ARR("%lf", a, sizeof(double), sizeof(a));
 ```
-
-## 后续计划
-
-- [x] 输出为日志文件
-- [x] 支持正常 terminal 下的彩色字体
-- [x] 简化版输出
-- [ ] 支持 Windows CMD 下的彩色字体
-- [x] 尝试解决多维数组的监控方案 *感谢[@solar-z](https://github.com/solar-z)*
-- [ ] 制作一份配套的基础使用说明视频
-- [ ] 准备一份扩展玩法说明
-- [ ] ...
