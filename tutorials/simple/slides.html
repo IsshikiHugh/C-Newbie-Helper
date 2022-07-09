@@ -153,7 +153,7 @@ int main(){
 void foo(){
   double x = 1.14514;
 
-  printf("This a normal 'printf' message.")
+  printf("This a normal 'printf' message.");
   LOG("This a normal log.");
   
   printf("x = %.2lf", x);
@@ -161,6 +161,9 @@ void foo(){
 }
 
 ```
+</script></section><section data-markdown><script type="text/template">
+
+![](https://raw.githubusercontent.com/IsshikiHugh/C-Class-Helper/main/img/img5.png)
 
 </script></section><section data-markdown><script type="text/template">
 
@@ -177,9 +180,13 @@ void foo(){
   SHOW_VAR("%.2lf", doubleX);
   SHOW_VAR("%c", charX);
   // It's ok to print pointer here!
-  SHOW_VAR("%p", intX);
+  SHOW_VAR("%p", &intX);
 }
 ```
+
+</script></section><section data-markdown><script type="text/template">
+
+![](https://raw.githubusercontent.com/IsshikiHugh/C-Class-Helper/main/img/img6.png)
 
 </script></section><section data-markdown><script type="text/template">
 
@@ -207,10 +214,14 @@ void foo(){
 
 </script></section><section data-markdown><script type="text/template">
 
+![](https://raw.githubusercontent.com/IsshikiHugh/C-Class-Helper/main/img/img7.png)
+
+</script></section><section data-markdown><script type="text/template">
+
 ## 显示开关
 
-- 使用 <font color="cyan">SET_CCH_SHOW(0);</font> 来关闭日志输出；
-- 使用 <font color="cyan">SET_CCH_SHOW(1);</font> 来打开日志输出；
+- 使用 <font color="cyan">SET_CCH_SHOW(<font color="pink">*0*</font>);</font> 来关闭日志输出；
+- 使用 <font color="cyan">SET_CCH_SHOW(<font color="pink">*1*</font>);</font> 来打开日志输出；
 - 默认情况下，输出都是打开的；
 
 ```c[2|4-5|7-8]
@@ -224,6 +235,10 @@ void foo(){
   LOG("(QWQ) I can be seen!");
 }
 ```
+
+</script></section><section data-markdown><script type="text/template">
+
+![](https://raw.githubusercontent.com/IsshikiHugh/C-Class-Helper/main/img/img3.png)
 
 </script></section><section data-markdown><script type="text/template">
 
@@ -245,7 +260,9 @@ void foo(){
 }
 ```
 
-![](https://raw.githubusercontent.com/IsshikiHugh/C-Class-Helper/main/img/img3.png)
+</script></section><section data-markdown><script type="text/template">
+
+![](https://raw.githubusercontent.com/IsshikiHugh/C-Class-Helper/main/img/img4.png)
 </script></section></section></div>
     </div>
 
@@ -289,7 +306,7 @@ void foo(){
       // options from URL query string
       var queryOptions = Reveal().getQueryHash() || {};
 
-      var options = extend(defaultOptions, {"width":1520,"height":960,"margin":0.04,"transition":"convex","slideNumber":true}, queryOptions);
+      var options = extend(defaultOptions, {"width":1520,"height":950,"margin":0.04,"transition":"convex","slideNumber":true}, queryOptions);
     </script>
 
 
