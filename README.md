@@ -17,3 +17,4 @@
 ## 教程 | Tutorial
 
 - [简明教程](https://isshikihugh.github.io/C-Class-Helper/tutorials/simple/slides.html)
+- [简明教程视频版](https://www.bilibili.com/video/BV1ua411p7HP/)
