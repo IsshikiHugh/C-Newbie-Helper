@@ -18,3 +18,15 @@
 
 - [简明教程](https://isshikihugh.github.io/C-Class-Helper/tutorials/simple/slides.html)
 - [简明教程视频版](https://www.bilibili.com/video/BV1ua411p7HP/)
+
+## 后续计划
+
+- [x] 输出为日志文件
+- [x] 支持正常 terminal 下的彩色字体
+- [x] 简化版输出
+- [ ] 支持 Windows CMD 下的彩色字体
+- [ ] 输出管道设置选项
+- [x] 尝试解决多维数组的监控方案 *感谢[@solar-z](https://github.com/solar-z)*
+- [x] 制作一份配套的基础使用说明视频
+- [ ] 准备一份扩展玩法说明
+- [ ] ...
