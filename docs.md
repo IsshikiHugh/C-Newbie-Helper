@@ -25,6 +25,9 @@
 #define CCH_MODE 2
 ```
 
+此外，CCH 默认输出到 `stderr` 中，如果希望它在和 `printf` 一起使用且顺序不变时，请改为 `stdout` 。 
+
+
 ## 使用 | Usage
 
 ### 导入 | Import
