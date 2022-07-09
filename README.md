@@ -12,7 +12,7 @@
 
 ## 文档 | Docs
 
-- [文档](https://github.com/IsshikiHugh/C-Class-Helper/blob/main/docs.md)
+- [文档](https://isshikihugh.github.io/C-Class-Helper/docs)
 
 ## 教程 | Tutorial
 
