@@ -1,7 +1,7 @@
-#include "CClassHelper.h"
+#include "CNewbieHelper.h"
 
 int main(){
-    SET_CCH_BRIEF_MODE(0);
+    SET_CNH_BRIEF_MODE(0);
     LOG("Normal mode here!");
 	BRIEF(
 		LOG("Brief mode here!");
@@ -9,7 +9,7 @@ int main(){
 	);
     LOG("Normal mode here!");
 
-    SET_CCH_BRIEF_MODE(1);
+    SET_CNH_BRIEF_MODE(1);
 	LOG("Brief mode here!");
     NORMAL(
 		LOG("Normal mode here!");

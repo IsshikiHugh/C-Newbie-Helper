@@ -1,10 +1,10 @@
-# C Class Helper
+# C Newbie Helper
 
-![](https://raw.githubusercontent.com/IsshikiHugh/C-Class-Helper/main/img/img1.png)
+![](https://raw.githubusercontent.com/IsshikiHugh/C-Newbie-Helper/main/img/img1.png)
 
 ## 简介 | Brief Intro
 
-[仓库地址 | Github Repo Address](https://github.com/IsshikiHugh/C-Class-Helper)
+[仓库地址 | Github Repo Address](https://github.com/IsshikiHugh/C-Newbie-Helper)
 
 这是一个为 C 语言学习新手提供的一个日志打印工具，整体功能比较简单，目的是培养刚接触编程的同学学习和养成 Debug 正确方法和好习惯。
 
@@ -12,8 +12,8 @@
 
 ## 文档 | Docs
 
-- [文档](https://isshikihugh.github.io/C-Class-Helper/docs)
+- [文档](https://isshikihugh.github.io/C-Newbie-Helper/docs)
 
 ## 教程 | Tutorial
 
-- [简明教程](https://isshikihugh.github.io/C-Class-Helper/tutorials/simple/slides.html)
+- [简明教程](https://isshikihugh.github.io/C-Newbie-Helper/tutorials/simple/slides.html)

@@ -1,9 +1,9 @@
 #include <stdio.h>
-#include "CClassHelper.h"
+#include "CNewbieHelper.h"
 
 
 int main(){
-    SET_CCH_BRIEF_MODE(0);
+    SET_CNH_BRIEF_MODE(0);
     LOG("Program Start!");
 
     int myIntVar = 114514;
